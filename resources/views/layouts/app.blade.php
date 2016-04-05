@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>{{ trans('text.projectflyer')}}</title>
         <link href="{{ url('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ url('/css/all.css') }}" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -24,4 +25,6 @@
             @yield('content')
         </div>
     </body>
+    <script type="text/javascript" src="{{ url('/js/all.js') }}"></script>
+    @include('layouts.flash')
 </html>
