@@ -2,7 +2,10 @@
 
 @section('content')
     <h1>Selling your home?</h1>
-    {{ Form::open(['method' => 'POST', 'action' => 'FlyerController@store', 'files' => true, 'class' => 'form-horizontal']) }}
-        @include('flyers.form')
-    {{ Form::close() }}
+    @include('errors.form')
+    <div class="row">
+        {{ Form::open(['method' => 'POST', 'action' => 'FlyerController@store', 'files' => true, 'class' => 'form-horizontal col-md-6']) }}
+            @include('flyers.form')
+        {{ Form::close() }}
+    </div>
 @stop
