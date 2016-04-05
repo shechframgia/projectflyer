@@ -17,4 +17,5 @@ return [
     'submit' => 'Submit',
     'home' => 'Home',
     'photos' => 'Photos',
+    'create_a_flyer' => 'Create a Flyer',
 ];
