@@ -14,7 +14,5 @@
 Route::get('/', function () {
     return view('pages.home');
 });
-Route::resourceparameters([
-    'flyers' => 'flyer',
-]);
 Route::resource('flyers', 'FlyerController');
+Route::get('{zip}/{street}', 'FlyerController@show');
