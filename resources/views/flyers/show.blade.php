@@ -8,12 +8,12 @@
             <hr>
             <div> {!! nl2br($flyer->description) !!} </div>
         </div>
-        <div class="col-md-8">
-        @forelse($flyer->photos as $photo)
-            {{ Html::image($photo->path, '', ['class' => 'media-object', 'data-holder-rendered' => 'true']) }}
-        @empty
-            <h4>No Result</h4>
-        @endforelse
+        <div class="col-md-8 gallery">
+            @forelse($flyer->photos as $photo)
+                {{ Html::image($photo->thumbnail_path, '', ['class' => 'gallery_image col-md-3', 'data-holder-rendered' => 'true']) }}
+            @empty
+                <h4>No Result</h4>
+            @endforelse
         </div>
     </div>
     <hr>
