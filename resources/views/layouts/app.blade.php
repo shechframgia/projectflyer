@@ -5,6 +5,7 @@
         <title>{{ trans('text.projectflyer')}}</title>
         <link href="{{ url('/css/app.css') }}" rel="stylesheet">
         <link href="{{ url('/css/all.css') }}" rel="stylesheet">
+        <link href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css') }}" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -26,5 +27,6 @@
         </div>
     </body>
     <script type="text/javascript" src="{{ url('/js/all.js') }}"></script>
+    @yield('scripts.footer')
     @include('layouts.flash')
 </html>
