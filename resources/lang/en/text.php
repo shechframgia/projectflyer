@@ -19,6 +19,8 @@ return [
     'photos' => 'Photos',
     'create_a_flyer' => 'Create a Flyer',
     'add_your_photos' => 'Add your Photos',
-    'login' => 'Login',
+    'logout' => 'Logout',
     'register' => 'Register',
+    'login' => 'Login',
+    'hello' => 'Hello, ',
 ];

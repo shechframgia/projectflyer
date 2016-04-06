@@ -1,84 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ trans('text.projectflyer')}}</title>
+        <link href="{{ url('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ url('/css/all.css') }}" rel="stylesheet">
+        <link href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <a class="navbar-brand" href="/">{{ trans('text.projectflyer')}}</a>
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ trans('text.home')}} <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ trans('text.about')}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ trans('text.contact')}}</a>
+            </li>
+          </ul>
 
-    <title>{{ trans('text.projectflyer')}}</title>
+          <ul class="nav navbar-nav navbar-right padding-r20">
+            <!-- Authentication Links -->
+            @if (Auth::guest())
+                <li>{{ link_to('/login', trans('text.login')) }}</li>
+                <li>{{ link_to('/register', trans('text.register')) }}</li>
+            @else
+                <p class="navbar-text">{{ trans('text.hello') }}</p>
+                <li class="dropdown pull-right">
+                    {!! Html::decode(link_to('#', Auth::user()->name . '<span class="caret"></span>', [
+                            'class' => 'dropdown-toggle',
+                            'data-toggle' =>'dropdown',
+                            'role' => 'button',
+                            'aria-expanded' => 'false'
+                        ])) !!}
 
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ url('css/app.css') }}" rel="stylesheet">
-    <link href="{{ url('css/all.css') }}" rel="stylesheet">
-    <link href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css') }}" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
-</head>
-<body id="app-layout">
-    <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ trans('text.projectflyer')}}
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/') }}">{{ trans('text.home')}}</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">{{ trans('text.login')}}</a></li>
-                        <li><a href="{{ url('/register') }}">{{ trans('text.register')}}</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            {!! Html::decode(link_to('/logout', '<i class="fa fa-btn fa-sign-out"></i>' . trans('text.logout'))) !!}
                         </li>
-                    @endif
-                </ul>
-            </div>
+                    </ul>
+                </li>
+            @endif
+        </ul>
+        </nav>
+        <div class="container">
+            @yield('content')
         </div>
-    </nav>
-    <div class="container">
-        @yield('content')
-    </div>
-    <!-- JavaScripts -->
-    <script src="{{ url('js/all.js') }}"></script>
+    </body>
+    <script type="text/javascript" src="{{ url('/js/all.js') }}"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     @yield('scripts.footer')
-
-</body>
+    @include('layouts.flash')
 </html>

@@ -14,6 +14,7 @@ class FlyerController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['execpt' => ['show']]);
+        parent::__construct();
     }
 
     public function create()
@@ -43,7 +44,20 @@ class FlyerController extends Controller
 
         $photo = $this->makePhoto($request->file('photo'));
 
-        Flyer::LocatedAt($zip, $street)->addPhoto($photo);
+        $flyer = Flyer::LocatedAt($zip, $street);
+
+        if (!$flyer->ownerBy($this->user)) {
+            if ($request->ajax()) {
+                return response(['message' => 'No way.'], 403);
+            }
+
+            flash('No way.');
+            return redirect('/');
+        }
+
+        $photo = $this->makePhoto($request->file('photo'));
+
+        $flyer->addPhoto($photo);
     }
 
     public function makePhoto(UploadedFile $file)

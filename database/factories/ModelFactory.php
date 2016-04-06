@@ -22,6 +22,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Flyer::class, function (Faker\Generator $faker) {
     return [
+        'user' => factory('App\Models\User')->create()->id,
         'street' => $faker->streetAddress,
         'city' => $faker->city,
         'zip' => $faker->postcode,
