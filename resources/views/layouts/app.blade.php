@@ -15,6 +15,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url('css/app.css') }}" rel="stylesheet">
     <link href="{{ url('css/all.css') }}" rel="stylesheet">
+    <link href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css') }}" rel="stylesheet">
 
     <style>
         body {
@@ -76,9 +77,8 @@
         @yield('content')
     </div>
     <!-- JavaScripts -->
-    @yield('scripts.footernavbar-inverse')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="{{ url('js/all.js') }}"></script>
+    @yield('scripts.footer')
+
 </body>
 </html>
