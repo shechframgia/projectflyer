@@ -19,7 +19,7 @@ class Flyer extends Model
     public function scopeLocatedAt($query, $zip, $street)
     {
         $street = str_replace('-', ' ', $street);
-        return $query->where(compact($zip, $street))->firstOrFail();
+        return $query->where(compact('zip', 'street'))->firstOrFail();
     }
 
     public function getPriceAttribute($price)
@@ -32,8 +32,18 @@ class Flyer extends Model
         return $this->photos()->save($photo);
     }
 
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function photos()
     {
         return $this->hasMany(Photo::class);
+    }
+
+    public function ownerBy(User $user)
+    {
+        return $this->user_id == $user->id;
     }
 }
