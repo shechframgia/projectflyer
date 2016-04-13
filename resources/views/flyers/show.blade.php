@@ -9,17 +9,16 @@
             <div> {!! nl2br($flyer->description) !!} </div>
         </div>
         <div class="col-md-8 gallery">
-            @forelse($flyer->photos as $photo)
+            @foreach($flyer->photos as $photo)
                 {{ Html::image($photo->thumbnail_path, '', ['class' => 'gallery_image col-md-3', 'data-holder-rendered' => 'true']) }}
-            @empty
-                <h4>No Result</h4>
-            @endforelse
+            @endforeach
+            <div class="col-md-12">
+                <hr>
+                {{ Form::open(['id' => 'addPhotosForm', 'method' => 'POST', 'url' => '/' . $flyer->zip . '/' . $flyer->street . '/photos', 'class' => 'dropzone']) }}
+                {{ Form::close() }}
+            </div>
         </div>
     </div>
-    <hr>
-    <h2>{{ trans('text.add_your_photos') }}</h2>
-    {{ Form::open(['id' => 'addPhotosForm', 'method' => 'POST', 'url' => '/' . $flyer->zip . '/' . $flyer->street . '/photos', 'class' => 'dropzone']) }}
-    {{ Form::close() }}
 @stop
 
 @section('scripts.footer')
