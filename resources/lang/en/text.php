@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -23,4 +24,5 @@ return [
     'register' => 'Register',
     'login' => 'Login',
     'hello' => 'Hello, ',
+    'signup' => 'Sign Up',
 ];
