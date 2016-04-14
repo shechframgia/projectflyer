@@ -42,8 +42,6 @@ class FlyerController extends Controller
             'photo' => 'required|mimes:jpeg, jpg, png',
         ]);
 
-        $photo = $this->makePhoto($request->file('photo'));
-
         $flyer = Flyer::LocatedAt($zip, $street);
 
         if (!$flyer->ownerBy($this->user)) {

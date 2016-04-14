@@ -10,7 +10,9 @@
         </div>
         <div class="col-md-8 gallery">
             @foreach($flyer->photos as $photo)
-                {{ Html::image($photo->thumbnail_path, '', ['class' => 'gallery_image col-md-3', 'data-holder-rendered' => 'true']) }}
+                <a href="/{{$photo->path}}" data-lity>
+                    {{ Html::image($photo->thumbnail_path, '', ['class' => 'gallery_image col-md-3', 'data-holder-rendered' => 'true']) }}
+                </a>
             @endforeach
             <div class="col-md-12">
                 <hr>
