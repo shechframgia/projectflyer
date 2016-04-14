@@ -12,7 +12,7 @@
           <a class="navbar-brand" href="/">{{ trans('text.projectflyer')}}</a>
           <ul class="nav navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">{{ trans('text.home')}} <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">{{ trans('text.home')}} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">{{ trans('text.about')}}</a>
